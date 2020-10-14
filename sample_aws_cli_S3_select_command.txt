@@ -1,0 +1,36 @@
+aws s3api select-object-content \
+--bucket tq3y4w5hy4w5yhw64y64y26 \
+--key sample_data.csv \
+--expression 'SELECT count(*) FROM s3object s' \
+--expression-type 'SQL' \
+--input-serialization '{"CSV": {}, "CompressionType": "NONE"}' \
+--output-serialization '{"CSV": {}}' "output.csv"
+
+aws s3api select-object-content \
+--bucket tq3y4w5hy4w5yhw64y64y26 \
+--key sample_data.csv \
+--expression 'SELECT * FROM s3object s' \
+--expression-type 'SQL' \
+--input-serialization '{"CSV": {}, "CompressionType": "NONE"}' \
+--output-serialization '{"CSV": {}}' "output.csv"
+
+aws s3api select-object-content \
+--bucket tq3y4w5hy4w5yhw64y64y26 \
+--key sample_data.csv \
+--expression 'SELECT s.Name FROM s3object s' \
+--expression-type 'SQL' --input-serialization '{"CSV": {"FileHeaderInfo": "USE"}, "CompressionType": "NONE"}' \
+--output-serialization '{"CSV": {}}' "output.csv"
+
+aws s3api select-object-content \
+--bucket tq3y4w5hy4w5yhw64y64y26 \
+--key sample_data.csv \
+--expression "SELECT * FROM s3object s WHERE s.Name LIKE 'Sam'" \
+--expression-type 'SQL' --input-serialization '{"CSV": {"FileHeaderInfo": "USE"}, "CompressionType": "NONE"}' \
+--output-serialization '{"CSV": {}}' "output.csv"
+
+aws s3api select-object-content \
+--bucket tq3y4w5hy4w5yhw64y64y26 \
+--key sample_data.csv \
+--expression "SELECT * FROM s3object s WHERE s.Name LIKE 'J%'" \
+--expression-type 'SQL' --input-serialization '{"CSV": {"FileHeaderInfo": "USE"}, "CompressionType": "NONE"}' \
+--output-serialization '{"CSV": {}}' "output.csv"
