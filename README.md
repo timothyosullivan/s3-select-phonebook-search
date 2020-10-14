@@ -139,7 +139,7 @@ For example:
 
 `curl -d '{"name":"Sam"}' -X POST {ENTER_API_GATEWAY_ENDPOINT};`
 
-The above call should return Sam’s information.
+The above call should return all Sam’s information.
 
 ## Cleanup
 
